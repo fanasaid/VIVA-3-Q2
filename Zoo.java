@@ -1,5 +1,5 @@
 
-package viva3;
+package VIVA3Q2;
 import java.util.ArrayList;
 class Zoo {
     private final ArrayList<Creature> creatures;
@@ -10,14 +10,21 @@ class Zoo {
         creatures = new ArrayList<>();
     }
     
+    private boolean isFullMessageShown = false;
+    
     // method to add creature
     public void addCreature(String species, double magicPower, String habitat){
         if(creatures.size()<numCreatures){
             creatures.add(new Creature(species, magicPower, habitat));
             System.out.println(species + " added to the zoo.");
         } else{
-            System.out.println("Zoo is full! Cannot add more creatures.");
-            System.out.println();
+            if(!isFullMessageShown){
+                System.out.println("Zoo is full! Cannot add more creatures.");
+                isFullMessageShown = true; // Prevent repeated messages
+                System.out.println();
+                
+            }
+            
         }
     }
     
